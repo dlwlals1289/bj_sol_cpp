@@ -16,4 +16,6 @@ int main(){
 
     cout << fixed; //
     cout<<result;
+    
+    // connection ok??
 }
