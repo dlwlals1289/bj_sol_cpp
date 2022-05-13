@@ -6,9 +6,9 @@ using namespace std;
 
 bool comp(string &s1, string &s2){
     if(s1.size()==s2.size())
-        return s1<s2;
+        return s1<s2; // 사전적으로 s1이 s2보다 먼저이면 참
     else 
-        return s1.size() < s2.size();
+        return s1.size() < s2.size(); // 길이가 더 짧으면 참
 }
 
 int main() {
@@ -18,19 +18,20 @@ int main() {
     int n;
     cin>>n; 
     
-    vector <string>v(n+1);
+    vector <string>v(n);
 
     for (int i = 0; i < n; i++)
     {
         cin>>v[i]; // 문자열 입력 받기
     }
+    
     sort(v.begin(), v.end(), comp); // 사전식으로 정렬
     
+
     for (int i = 0; i < n; i++)
     {
-        if (v[i]==v[i-1])
+        if (i !=0 && v[i]==v[i-1]) // 앞 단어와 중복되면 출력 안 하고 넘어감, i != 0 -> 없으면 런타임에러 발생
         {
-            cout<<"----------"<<v[i]<<'\n';
             continue;
         }
         
