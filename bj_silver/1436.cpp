@@ -1,4 +1,7 @@
-// 영화감독 숌
+// 영화감독 숌 
+//1번째 방법 - 실패  
+//솔루션 슬쩍 보고 2차 방법 - 성공 
+//다시 한 번 더 풀어볼 것
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -10,29 +13,26 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL); cout.tie(NULL);
 
-    int n;
+    int n,cnt=0;
     cin>>n;
 
-    vector <int>v;
-    string s;
-    v.push_back(666);
-
-    for (int i = 0; i < v.size()&&v.size()<10000; i++)
+    for (int i = 0; cnt != n; i++)
     {
-        // cout<<i<<'\n';
-        for (int j = 0; j < 10; j++)
+        int temp=i;
+        while (temp>665)
         {
-            s = to_string(j)+to_string(v[i]); // 1~9를 이전 원소들의 앞에 붙이기
-            v.push_back(stoi(s));
-            s = to_string(v[i])+to_string(j); // 1~9를 이전 원소들 뒤에 붙이기
-            v.push_back(stoi(s));
+            if(temp%1000==666){
+                cnt++;
+                break;
+            }
+            else{
+                temp/=10;
+            }
         }
-        sort(v.begin(), v.end());
-        v.erase(unique(v.begin(), v.end()), v.end());
-        
+        if(cnt==n){
+            cout<<i<<'\n';
+            break;
+        }
     }
-    cout<<v[n-1]<<'\n';
-    
-
     return 0;
 }
